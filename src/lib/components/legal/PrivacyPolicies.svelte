@@ -1,7 +1,6 @@
 <script lang="ts">
-    import { descriptionColor, textColor } from "$lib/scripts/stores/appearance";
-  import { fade } from "svelte/transition";
-import Rule from "../Rule.svelte";
+    import { fade } from "svelte/transition";
+    import Rule from "./Rule.svelte";
 
     let typeOfDataCollected = [
         `
@@ -42,8 +41,8 @@ import Rule from "../Rule.svelte";
 {#if pageRendered}
     <section class="flex flex-col gap-10 mx-auto max-w-[1279px] px-10 mt-40" transition:fade >
         <div class="flex flex-col gap-2">
-            <h1 class="font-semibold text-3xl {$textColor}">Privacy Policy</h1>
-            <p class="{$descriptionColor} leading-loose text-sm " >
+            <h1 class="font-semibold text-3xl">Privacy Policy</h1>
+            <p class="text-zinc-300 leading-loose text-sm " >
                 This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells 
                 You about Your privacy rights and how the law protects You.
             </p>

@@ -1,5 +1,7 @@
 <script>
-    import { Discord, Twitter } from "$lib/scripts/logos";
+    import { Discord, Instagram } from "$lib/scripts/socials";
+
+    const currentYear = new Date().getFullYear();
 </script>
 
 <footer class="w-full max-w-[1279px] mx-auto" >
@@ -14,9 +16,9 @@
                     alt="logo"
                     class="w-16"
                 />
-                <h2 class="text-3xl font-medium" >Template</h2> 
+                <h2 class="text-3xl font-semibold" >Flova</h2> 
             </a>
-            <p class="text-sm" >Copyright © Template 2024</p>
+            <p class="text-sm" >Copyright © Hone Services {currentYear}</p>
         </div>
 
         <div class="flex flex-col gap-2 text-sm">
@@ -55,13 +57,13 @@
             </a>
         </div>
 
-        <div class="flex items-center gap-8">
-            <a href="/" target="_blank" class="hover:scale-110 transition">
+        <div class="flex items-center gap-4">
+            <a href="https://discord.gg/UdVyWkhWFP" target="_blank" class="hover:scale-110 transition">
                 {@html Discord("#f1f1f1", "34px")}
             </a>
 
-            <a href="/" target="_blank" class="hover:scale-110 transition" >
-                {@html Twitter("#f1f1f1", "34px")}
+            <a href="https://www.instagram.com/honeservices" target="_blank" class="hover:scale-110 transition" >
+                {@html Instagram("#f1f1f1", "34px")}
             </a>
         </div>
     </div>

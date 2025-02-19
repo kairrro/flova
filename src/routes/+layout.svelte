@@ -13,13 +13,11 @@
 
 {#if pageRendered}
     <div class="flex flex-col gap-20" >
-        <Header />
         <main 
             class="flex flex-col gap-20"
             transition:fade
         >
             <slot />
         </main>
-        <Footer />
     </div>
 {/if}

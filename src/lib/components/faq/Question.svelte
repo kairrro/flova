@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { descriptionColor } from "$lib/scripts/stores/appearance.ts";
     import { slide } from "svelte/transition";
 
     export let question: string = "";
@@ -17,7 +16,7 @@
         <p>{question}</p>
 
         {#if answerOpen}
-            <p class={`${$descriptionColor} text-sm`} transition:slide >{answer}</p>
+            <p class={`text-zinc-300 text-sm`} transition:slide >{answer}</p>
         {/if}
     </div>
 </button>

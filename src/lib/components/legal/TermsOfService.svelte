@@ -1,35 +1,13 @@
 <script lang="ts">
-  import { fade } from "svelte/transition";
-    import Rule from "../Rule.svelte";
+    import { fade } from "svelte/transition";
+    import Rule from "./Rule.svelte";
 
-    let userAccountRules = [
-        `
-            When You create an account with Us, You must provide Us information that is accurate, complete, and
-            current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate
-            termination of Your account on Our Service.
-        `,
-        `
-            You are responsible for safeguarding the password that You use to access the Service and for any activities
-            or actions under Your password, whether Your password is with Our Service or a Third-Party Social Media
-            Service.
-        `,
-        `
-            You agree not to disclose Your password to any third party. You must notify Us immediately upon becoming
-            aware of any breach of security or unauthorized use of Your account.
-        `
+    let payment = [
+        `You are only permitted to have a maximum of 1 account on our site. Any additional accounts found by you will be removed.`
     ];
 
-    let changesToTOS: string[] = [
-        `
-            We reserve the right, at Our sole discretion, to modify or replace these Terms at any time. If a revision is
-            material We will make reasonable efforts to provide at least 30 days' notice prior to any new terms taking
-            effect. What constitutes a material change will be determined at Our sole discretion.,
-        `,
-        `
-            By continuing to access or use Our Service after those revisions become effective, You agree to be bound
-            by the revised terms. If You do not agree to the new terms, in whole or in part, please stop using the
-            website and the Service.
-        `
+    let harrassment: string[] = [
+        `We do not condone harassment on the website. This includes doxxing, sending hate speech using our platform, IP logging, phishing, or any form of malicious intent against anyone.`
     ];
 
     let termination: string[] = [
@@ -105,33 +83,39 @@
 
         <div class="flex flex-col gap-16" >
             <Rule 
-                title = "User Account"
-                rules = {userAccountRules}
+                title = "Payment"
+                rules = {payment}
             />
 
             <Rule 
-                title = "Termination"
-                rules = {termination}
+                title = "Harrassment"
+                rules = {harrassment}
             />
 
             <Rule 
-                title = "Order Cancellation"
-                rules = {orderCancellation}
+                title = "Exploits and Vulnerabilities"
+                rules = {[
+                    `You agree to reporting any exploit or bug you find on the site. Additionally, you are not permitted to spam any of our software.`
+                ]}
             />
 
             <Rule 
-                title = "Availability, Errors and Inaccuracies"
-                rules = {inaccuracies}
+                title = "Content"
+                rules = {[
+                    `You are completely responsible for the content you upload to this service. We do not condone any form of media that can be deemed as harmful, NSFW, pirated, or illegal.`
+                ]}
             />
 
             <Rule 
-                title = "Your Information"
-                rules = {yourInformation}
+                title = "Your Account"
+                rules = {[
+                    `You agree not to engage in selling or trading your accounts. You are also prohibited from sharing your account details with other users.`
+                ]}
             />
 
             <Rule 
                 title = "Changes to Terms and Conditions"
-                rules = {changesToTOS}
+                rules = {[`By using our services, you agree that our terms of service are subject to change at any given time.`]}
             />
         </div>
     </section>

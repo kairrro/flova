@@ -24,9 +24,12 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@supabase/supabase-js": "^2.48.1",
 		"@vercel/analytics": "^1.2.2",
 		"appwrite": "^15.0.0",
 		"node-appwrite": "^14.1.0",
-		"svelte-inview": "^4.0.2"
+		"svelte-inview": "^4.0.2",
+		"svelte-turnstile": "^0.10.0",
+		"svelte-typewriter": "^3.2.3"
 	}
 }

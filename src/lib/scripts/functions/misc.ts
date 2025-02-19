@@ -1,4 +1,27 @@
-import type { clickOutsideAction } from "../types/misc"
+import type { clickOutsideAction } from "../types/misc";
+
+export function generateUUID() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0,
+            v = c === 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
+
+export function hasVideoExtension(url: string): boolean {
+    const videoExtensions = ['mp4', 'mov', 'avi', 'mkv', 'wmv', 'flv', 'webm'];
+    const parts = url.split('.');
+    const urlExtension = parts.length > 1 ? parts[parts.length - 1].toLowerCase() : null;
+    return urlExtension !== null && videoExtensions.includes(urlExtension);
+}
+
+export function removeCookie(name: string) {
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+}
+
+export function setCookie(token: string){
+    document.cookie = `sb-access-token=${token}; path=/; expires=${new Date(Date.now() + 1 * 60 * 60 * 1000).toUTCString()}; secure; samesite=strict`;
+}
 
 export const clickOutside: clickOutsideAction = (element) => {
     function handleClick(event: MouseEvent) {
@@ -19,7 +42,7 @@ export const clickOutside: clickOutsideAction = (element) => {
     }
 }
 
-export function getCookieValue(name) {
+export function getCookieValue(name: string) {
     const nameEQ = name + "=";
     const cookies = document.cookie.split(';');
     for (let i = 0; i < cookies.length; i++) {
@@ -38,4 +61,17 @@ export function isValidEmail(email: string) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
     return emailRegex.test(email);
+}
+
+export function isValidPassword(password: string | undefined): boolean {
+    if (typeof password !== 'string') {
+        return false;
+    }
+    return password.length >= 8;
+}
+
+export function isValidFileType(file: File, validTypes: string[]): boolean {
+    const fileType = file.type.toLowerCase();
+    const fileExtension = file.name.split('.').pop()?.toLowerCase();
+    return validTypes.some(type => type.toLowerCase() === `.${fileExtension}` || type.toLowerCase() === fileType);
 }
