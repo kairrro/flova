@@ -13,7 +13,7 @@
         Litecoin, Monero, Paypal, Pinterest, Playstation, Reddit, Roblox, Snapchat, Soundcloud, Spotify,
         Steam, Telegram, Threads, Tiktok, Tumblr, Twitch, Twitter, Valorant, Wattpad, Xbox, Youtube
     } from "$lib/scripts/socials";
-    import { BetaTester, Ceo, Og, Premium } from "$lib/scripts/badges";
+    import { BetaTester, Ceo, DayOne, Og, Premium } from "$lib/scripts/badges";
     import { clipSocials, sparkles, badgeTitles } from "$lib/scripts/globals/biolink";
     import CustomLink from "./CustomLink.svelte";
 
@@ -92,6 +92,7 @@
 
     const badgeIcons: Record<string, string> = {
         beta_tester: BetaTester(badge_color, "19px"),
+        day_one: DayOne(badge_color, "19px"),
         ceo: Ceo(badge_color, "19px"),
         og: Og(badge_color, "19px"),
         premium: Premium(badge_color, "19px"),

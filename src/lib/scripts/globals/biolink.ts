@@ -73,4 +73,5 @@ export const badgeTitles: Record<string, string> = {
     "premium" : "Premium",
     "og" : "OG",
     "ceo" : "CEO",
+    "day_one": "Day One",
 }
