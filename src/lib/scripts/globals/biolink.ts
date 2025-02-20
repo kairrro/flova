@@ -4,6 +4,7 @@ import {
     Roblox, Snapchat, Soundcloud, Spotify, Steam, Telegram, Threads, Tiktok,
     Tumblr, Twitch, Twitter, Valorant, Wattpad, Xbox, Youtube
 } from "$lib/scripts/socials";
+import { BetaTester, Og, Premium, Ceo, DayOne } from "../badges";
 
 export const clipboardSocials: string[] = [
     "roblox", "xbox", "bitcoin", "cashapp", "snapchat", "discord", "ethereum", "playstation", "valorant", "monero", "litecoin", 
@@ -74,4 +75,12 @@ export const badgeTitles: Record<string, string> = {
     "og" : "OG",
     "ceo" : "CEO",
     "day_one": "Day One",
+}
+
+export const dashboardBadgeIcons: Record<string, string> = {
+    "beta_tester": BetaTester(undefined, "16px"),
+    "og": Og(undefined, "16px"),
+    "ceo": Ceo(undefined, "16px"),
+    "premium": Premium(undefined, "16px"),
+    "day_one": DayOne(undefined, "16px"),
 }

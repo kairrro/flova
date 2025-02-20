@@ -5,13 +5,7 @@
     import { toggleMobileSidebar, togglePremiumUI } from "$lib/scripts/stores/functions";
     import { slide } from "svelte/transition";
     import { currentLink } from "$lib/scripts/stores/values";
-
-    const badgeIcons: Record<string, string> = {
-        "beta_tester": BetaTester(undefined, "16px"),
-        "og": Og(undefined, "16px"),
-        "ceo": Ceo(undefined, "16px"),
-        "premium": Premium(undefined, "16px"),
-    }
+    import { dashboardBadgeIcons } from "$lib/scripts/globals/biolink";
 </script>   
 
 {#if $mobileSidebarOpen}
@@ -45,7 +39,7 @@
                             {#if $badges.length > 0}
                                 <div class="flex items-center gap-2 p-2 bg-[#040404C2] mr-auto rounded-xl">
                                     {#each $badges as badge}
-                                        {@html badgeIcons[badge]}
+                                        {@html dashboardBadgeIcons[badge]}
                                     {/each}
                                 </div>
                             {/if}

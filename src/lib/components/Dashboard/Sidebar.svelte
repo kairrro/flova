@@ -4,17 +4,8 @@
     import { Account, Dashboard, Donate, Links, External } from "$lib/scripts/logos";
     import { togglePremiumUI } from "$lib/scripts/stores/functions";
     import { currentLink } from "$lib/scripts/stores/values";
-
-    const badgeIcons: Record<string, string> = {
-        "beta_tester": BetaTester(undefined, "16px"),
-        "og": Og(undefined, "16px"),
-        "ceo": Ceo(undefined, "16px"),
-        "premium": Premium(undefined, "16px"),
-    }
-
-    function toLink(){
-        
-    }
+    import { badgeIcons } from "$lib/scripts/globals/misc";
+  import { dashboardBadgeIcons } from "$lib/scripts/globals/biolink";
 </script>   
 
 <nav class="fixed top-0 flex flex-col gap-20 h-full p-4 justify-between bg-[#0e0e0e] w-full max-w-[270px] md:hidden z-[20]">
@@ -35,7 +26,7 @@
                     {#if $badges.length > 0}
                         <div class="flex items-center gap-2 p-2 bg-[#040404C2] mr-auto rounded-xl">
                             {#each $badges as badge}
-                                {@html badgeIcons[badge]}
+                                {@html dashboardBadgeIcons[badge]}
                             {/each}
                         </div>
                     {/if}
