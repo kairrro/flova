@@ -62,23 +62,29 @@
     onMount(async () => {
         if (!$user){
             await checkSession();
-
+            
             goto("/")
         }
     })
 </script>
 
+<div 
+    class="fixed w-screen bg-[#0A0A0A] p-4 hidden md:flex mr-auto border border-b border-zinc-800 z-20" 
+>
+    <button
+        on:click={() => toggleMobileSidebar(true)}
+    >
+        {@html Hamburger(undefined, "32px")}
+    </button>
+</div>
+
 <div class="flex flex-col" >
     <Sidebar />
     <MobileSidebar />
     <div class="flex flex-col gap-10 pl-[300px] py-10 pr-4 w-full max-w-[1000px] md:p-4" >
-        <button 
-            class="p-2 hidden md:flex mr-auto" 
-            on:click={() => toggleMobileSidebar(true)}
-        >
-            {@html Hamburger(undefined, "32px")}
-        </button>
-        <slot/>
+        <div class="md:mt-20 pb-20" >
+            <slot/>
+        </div>
     </div>
 </div>
 

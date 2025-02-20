@@ -4,6 +4,17 @@
     import { SITE_NAME } from "$lib/scripts/globals/misc";
     import { description } from "$lib/scripts/globals/misc";
     import FrontpageShowcase from "$lib/components/Biolink/FrontpageShowcase.svelte";
+    import { onMount } from "svelte";
+    import { currentLink, signedIn } from "$lib/scripts/stores/values";
+    import type { PageData } from "./$types";
+
+    export let data: PageData;
+
+    signedIn.set(data.status);
+
+    onMount(() => {
+        currentLink.set("/");
+    })
 </script>
 
 <svelte:head>

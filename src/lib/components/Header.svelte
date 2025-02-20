@@ -1,17 +1,11 @@
 <script lang="ts">
     import { Hamburger, Cancel } from "$lib/scripts/logos";
-    import { clickOutside } from "$lib/scripts/functions/misc";
-    import { slide } from "svelte/transition";
     import { signedIn } from "$lib/scripts/stores/values";
-
-    let dropdownOpen = false;
+    import FrontpageSidebar from "./FrontpageSidebar.svelte";
+    import { frontpageSidebarState } from "$lib/scripts/stores/values";
 
     function toggleDropdown(){
-        dropdownOpen = !dropdownOpen;
-    }
-
-    function closeDropdown(){
-        dropdownOpen = false;
+        frontpageSidebarState.set(!$frontpageSidebarState);
     }
 </script>
 
@@ -25,7 +19,7 @@
             <a href="/" class="hover:underline underline-offset-4 transition">Home</a>
             <a href="/faq" class="hover:underline underline-offset-4 transition">FAQ</a>
 
-            {#if signedIn}
+            {#if $signedIn}
                 <a href="/dashboard" class="hover:underline underline-offset-4 transition">Dashboard</a>
             {:else}
                 <a href="/login" class="hover:underline underline-offset-4 transition">Login</a>
@@ -39,39 +33,8 @@
     </div>
 </header>
 
-{#if dropdownOpen}
-    <div 
-        class="fixed hidden md:flex flex-col justify-between h-full gap-2 h-screen w-full max-w-[300px] bg-[#0f0f0f] z-40 py-4 left-0 text-zinc-300" 
-        use:clickOutside
-        on:outside={closeDropdown}
-        transition:slide={{ axis: "x" }}
-    >   
-        <div class="flex flex-col gap-4" >
-            <button 
-                class="ml-auto mr-4" 
-                on:click={closeDropdown}
-            >
-                {@html Cancel("17px", "#f1f1f1")}
-            </button>
-    
-            <div class="flex flex-col px-4 text-sm" >
-                <a
-                    href="/"  
-                    class="w-full py-2"  
-                    on:click={closeDropdown}
-                >
-                    <p>Home</p>
-                </a>
-                <a
-                    href="/"  
-                    class="w-full py-2"  
-                    on:click={closeDropdown}
-                >
-                    <p>Placeholder</p>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <div class="hidden md:flex fixed bg-black opacity-50 h-screen w-screen z-10" ></div>
+{#if $frontpageSidebarState}
+    <FrontpageSidebar
+        signedIn={$signedIn}
+    />
 {/if}

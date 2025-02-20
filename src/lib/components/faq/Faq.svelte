@@ -1,5 +1,11 @@
 <script lang="ts">
     import Question from "./Question.svelte";
+    import { onMount } from "svelte";
+    import { currentLink } from "$lib/scripts/stores/values";
+
+    onMount(() => {
+        currentLink.set("/faq");
+    })
 </script>
 
 <section 

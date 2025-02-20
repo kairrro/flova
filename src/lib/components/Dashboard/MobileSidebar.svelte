@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { profile_picture, display_name, user, badges, currentSidebar, mobileSidebarOpen } from "$lib/scripts/stores/values";
+    import { profile_picture, display_name, user, badges, mobileSidebarOpen } from "$lib/scripts/stores/values";
     import { BetaTester, Ceo, Og, Premium } from "$lib/scripts/badges";
     import { Account, Dashboard, Donate, Links, External, Cancel } from "$lib/scripts/logos";
     import { toggleMobileSidebar, togglePremiumUI } from "$lib/scripts/stores/functions";

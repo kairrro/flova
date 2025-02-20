@@ -1,6 +1,5 @@
 <script lang="ts">
     import { Loading } from "$lib/scripts/logos";
-    import { buttonBackground } from "$lib/scripts/stores/appearance";
 
     export let text: string = "";
     export let href = "";
@@ -13,7 +12,7 @@
 {#if href}
     <a 
         href={href} 
-        class={`flex items-center justify-center ${$buttonBackground} ${textColor} py-2 w-full rounded-lg ${disabled ? "" : {hoverColor}} transition text-sm`} 
+        class={`flex items-center justify-center ${textColor} py-2 w-full rounded-lg ${disabled ? "" : {hoverColor}} transition text-sm`} 
         on:click={() => func()}  
     >
         {#if disabled}
@@ -26,7 +25,7 @@
 {:else}
     <button 
         disabled={disabled} 
-        class={`flex items-center justify-center ${$buttonBackground} ${textColor} py-2 px-10 w-full rounded-lg ${disabled ? "" : {hoverColor}} transition text-sm`} 
+        class={`flex items-center justify-center ${textColor} py-2 px-10 w-full rounded-lg ${disabled ? "" : {hoverColor}} transition text-sm`} 
         on:click={() => func()} 
     >
         {text}

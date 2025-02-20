@@ -30,6 +30,7 @@ export const mobileSidebarOpen = writable<boolean>(false);
 export const addLinkOpen = writable<boolean>(false);
 export const addedLinkTrashDisabled = writable<boolean>(false);
 export const signedIn = writable<boolean>(false);
+export const frontpageSidebarState = writable<boolean>(false);
 
 export const uuid = writable("");
 export const user = writable("");
