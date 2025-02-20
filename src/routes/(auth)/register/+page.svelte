@@ -62,7 +62,7 @@
     <Notification message={notification.message} type={notification.type} />
 {/if}
 
-<form method="POST" class="flex flex-col gap-8 justify-center items-start max-w-[500px] w-full mx-auto mt-32 px-4" use:enhance={signUp} >
+<form method="POST" class="flex flex-col gap-8 justify-center items-start max-w-[500px] w-full mx-auto mt-32 px-4 mb-20" use:enhance={signUp} >
     <div class="flex flex-col gap-2" >
         <h2 class="text-3xl font-semibold">Register</h2>
         <p class="text-zinc-300 text-sm">

@@ -28,6 +28,7 @@
 
     {#if id === 'email'}
         <input 
+            name={id}
             type="email" 
             id={id} 
             placeholder={placeholder} 
@@ -39,6 +40,7 @@
 
     {:else if type === 'password'}
         <input 
+            name={id}
             type="password" 
             id={id} 
             placeholder={placeholder} 
@@ -50,6 +52,7 @@
 
     {:else if type === 'tel'}
         <input 
+            name={id}
             type="tel" 
             id={id} 
             placeholder={placeholder} 
@@ -61,6 +64,7 @@
 
     {:else if type === 'number'}
         <input 
+            name={id}
             type="text" 
             id={id} 
             placeholder={placeholder} 
@@ -84,6 +88,7 @@
 
     {:else}
         <input 
+            name={id}
             type="text" 
             placeholder={placeholder} 
             id={id} 

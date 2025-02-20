@@ -7,10 +7,27 @@
     import { onMount } from "svelte";
     import { currentLink, signedIn } from "$lib/scripts/stores/values";
     import type { PageData } from "./$types";
+    import { goto } from "$app/navigation";
+    import { checkSession } from "$lib/scripts/supabase/client";
 
     export let data: PageData;
 
     signedIn.set(data.status);
+
+    function hasAccessTokenInUrl() {
+        const hashParams = new URLSearchParams(window.location.hash.slice(1));
+        return hashParams.has('access_token');
+    }
+
+    onMount(async () => {
+        if (hasAccessTokenInUrl()){
+            setTimeout(() => {
+                goto("/dashboard")
+            }, 2000)
+        };
+
+        await checkSession();
+    });
 
     onMount(() => {
         currentLink.set("/");

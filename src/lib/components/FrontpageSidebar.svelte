@@ -67,7 +67,7 @@
                         href="/login" 
                         class="flex items-center gap-2 text-sm py-[12px] px-4 rounded-lg transition hover:bg-[#212121]" 
                         style={`${$currentLink === "/login" ? "background: rgb(31, 31, 31);" : ""}`} 
-                        on:click={() => toggleMobileSidebar(false)}
+                        on:click={() => frontpageSidebarState.set(false)}
                         >
                         <li>Login</li>
                     </a>
@@ -76,7 +76,7 @@
                         href="/register" 
                         class="flex items-center gap-2 text-sm py-[12px] px-4 rounded-lg transition hover:bg-[#212121]" 
                         style={`${$currentLink === "/register" ? "background: rgb(31, 31, 31);" : ""}`} 
-                        on:click={() => toggleMobileSidebar(false)}
+                        on:click={() => frontpageSidebarState.set(false)}
                         >
                         <li>Register</li>
                     </a>

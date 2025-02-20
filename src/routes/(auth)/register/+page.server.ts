@@ -5,7 +5,7 @@ import { createNewUser } from '$lib/server/auth';
 import { TURNSTILE_SECRETKEY } from '$env/static/private';
 
 async function verifyCredentials(email: string, username: string, password: string | null, confirm_password: string | null){
-    if (!email || !username || !username || !password || !confirm_password){
+    if (!email || !username || !password || !confirm_password){
         return {
             message: "Please complete the registration form",
             status: false,
@@ -43,8 +43,13 @@ export const actions = {
 
         const verifyInfo = await verifyCredentials(email, username, password, confirm_password);
 
+        console.log(email, username, password, confirm_password);
+
         if (verifyInfo.status){
             const { success } = await validateToken(cf_token, TURNSTILE_SECRETKEY);
+
+            // DEBUGGING FOR DEVMODE
+            // const success = true;
 
             if (success){
                 const accountCreation = await createNewUser(email, username, password);
