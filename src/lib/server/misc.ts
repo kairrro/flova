@@ -244,3 +244,29 @@ export async function checkUsernameChange(uuid: string, username: string): Promi
         }
     } 
 }
+
+export async function messageDiscordWebhook(webhook: string, message: string){
+    try {
+        const payload = {
+            content: message,
+        }
+    
+        const response = await fetch(webhook, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (response.ok){
+            console.log("Webhook sent to discord webhook");
+
+        } else {
+            console.error("Error while sending message to discord webhook");
+        }
+
+    } catch (error){
+        console.error(error);
+    }
+}

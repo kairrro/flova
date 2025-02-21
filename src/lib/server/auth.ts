@@ -1,4 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
+import { messageDiscordWebhook } from "./misc";
+import { DISCORD_WEBHOOK } from "$env/static/private";
 
 export const SUPABASE_URL = "https://nfeoimbkskulevvxpwxi.supabase.co";
 export const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5mZW9pbWJrc2t1bGV2dnhwd3hpIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwNDk5NTM5OSwiZXhwIjoyMDIwNTcxMzk5fQ.dUPAf2isr6fGrHpsdUMeeWeR_oz_z2AUmW1ChaOWH2M"
@@ -153,6 +155,8 @@ export async function createNewUser(email: string, username: string, password: s
         });
 
         if (!error){
+            await messageDiscordWebhook(DISCORD_WEBHOOK, `New user signed up!\n\nEmail: ${email}\nUsername: ${username}`);
+
             return {
                 message: "Account successfully created",
                 status: true,

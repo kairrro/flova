@@ -13,8 +13,9 @@
     import Dropdown from "../custom/Dropdown.svelte";
     import { createEventDispatcher } from "svelte";
     import { removeMedia } from "$lib/scripts/functions/dashboard";
-    import type { MediaType } from "$lib/scripts/types/misc";
+    import type { CustomResponse, MediaType } from "$lib/scripts/types/misc";
     import { onMount } from "svelte";
+  import { Result } from "postcss";
 
     const dispatch = createEventDispatcher();
 
@@ -54,7 +55,7 @@
         profile_opacity.set(event.target.value);
     }
 
-    function notify(message: string, detail = "") {
+    function notify(message: string, detail = "", success: boolean = false) {
         apiResponse = `${message}: ${detail}`;
         success = false;
         
@@ -163,9 +164,9 @@
                 body: JSON.stringify(payload)            
             })
 
-            const data = await response.json();
+            const data: CustomResponse = await response.json();
 
-            console.log(data);
+            notify("test", "test", data.success)
 
             if (response.status === 200){
                 success = true;
@@ -182,9 +183,6 @@
         }
 
         finally {
-            notificationMessage.set("Placeholder text here");
-            notificationType.set(success ? "success" : "error"); 
-
             setTimeout(() => {
                 saveButtonDisabled = false;
                 success = undefined;
