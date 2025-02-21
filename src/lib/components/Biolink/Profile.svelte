@@ -304,7 +304,7 @@
 
         {#if username === "kyro"}
             <CustomLink 
-                name="sign up at flova"
+                name="sign up at my linktree"
                 href="/"
             />
         {/if}
