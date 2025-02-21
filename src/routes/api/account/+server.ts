@@ -110,16 +110,18 @@ export const POST: RequestHandler = async ({ request }) => {
         description_color
       );
 
+      let statusCode: number;
+
       if (accountData.status === "success") {
-        return new Response(JSON.stringify({ message: accountData.message }), {
-          status: 200,
-        });
+        statusCode = 200;
 
       } else {
-        return new Response(JSON.stringify({ message: accountData.message }), {
-          status: 400,
-        });
+        statusCode = 400;
       }
+
+      return new Response(JSON.stringify({ message: accountData.message, status: statusCode === 200 ? true : false }), {
+        status: statusCode,
+      });
     }
 
     else {

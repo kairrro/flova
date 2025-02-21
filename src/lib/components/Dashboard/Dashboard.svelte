@@ -15,7 +15,7 @@
     import { removeMedia } from "$lib/scripts/functions/dashboard";
     import type { CustomResponse, MediaType } from "$lib/scripts/types/misc";
     import { onMount } from "svelte";
-  import { Result } from "postcss";
+    import { notify } from "$lib/scripts/functions/misc";
 
     const dispatch = createEventDispatcher();
 
@@ -53,16 +53,6 @@
 
     function handleOnChange(event: any) {
         profile_opacity.set(event.target.value);
-    }
-
-    function notify(message: string, detail = "", success: boolean = false) {
-        apiResponse = `${message}: ${detail}`;
-        success = false;
-        
-        notificationMessage.set(apiResponse);
-        notificationType.set("error");
-        notificationState.set(true);
-        setTimeout(() => { notificationState.set(false) }, 3000);
     }
 
     function getSizeLimitAndValidTypes(type: MediaType) {
@@ -116,7 +106,7 @@
             const { sizeLimit, validTypes } = getSizeLimitAndValidTypes(type);
 
             if (!isValidFileType(file, validTypes)) {
-                notify("Invalid file type", validTypes.join(', '));
+                notify(`Invalid file type: ${validTypes.join(', ')}`);
                 return;
             }
 
@@ -166,16 +156,18 @@
 
             const data: CustomResponse = await response.json();
 
-            notify("test", "test", data.success)
+            console.log(data);
 
-            if (response.status === 200){
+            if (response.status){
                 success = true;
                 apiResponse = data.message;
 
-            } else if (response.status == 400){
+            } else if (response.status){
                 success = false;
                 apiResponse = data.message;
             }
+
+            notify(data.message, success);
         }
 
         catch (error){

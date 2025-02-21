@@ -1,7 +1,6 @@
 <script lang="ts">
     import { page } from "$app/stores";
     import { enhance } from "$app/forms";
-    import Notification from "$lib/components/Notification.svelte";
     import { Loading } from "$lib/scripts/logos";
     import { Turnstile } from "svelte-turnstile";
     import type { ActionData } from "./$types";
@@ -10,6 +9,7 @@
     import { goto } from "$app/navigation";
     import { PUBLIC_TURNSTILE_SITEKEY } from "$env/static/public";
     import Input from "$lib/components/custom/Input.svelte";
+    import { notify } from "$lib/scripts/functions/misc";
 
     export let form: ActionData;
 
@@ -42,9 +42,7 @@
     }
 
     $: if (form && !form.status){
-        notification.state = true;
-        notification.message = form.message;
-        notification.type = "failed";
+        notify(form.message)
     }
 
     $: if (notification.state) {
@@ -57,10 +55,6 @@
         await checkSessionValidity() ? goto("/dashboard") : null;
     });
 </script>
-
-{#if notification.state}
-    <Notification message={notification.message} type={notification.type} />
-{/if}
 
 <form method="POST" class="flex flex-col gap-8 justify-center items-start max-w-[500px] w-full mx-auto mt-32 px-4 mb-20" use:enhance={signUp} >
     <div class="flex flex-col gap-2" >

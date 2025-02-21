@@ -1,4 +1,5 @@
 import type { clickOutsideAction } from "../types/misc";
+import { notificationMessage, notificationState, notificationType } from "../stores/values";
 
 export function generateUUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -74,4 +75,11 @@ export function isValidFileType(file: File, validTypes: string[]): boolean {
     const fileType = file.type.toLowerCase();
     const fileExtension = file.name.split('.').pop()?.toLowerCase();
     return validTypes.some(type => type.toLowerCase() === `.${fileExtension}` || type.toLowerCase() === fileType);
+}
+
+export function notify(message: string, success: boolean = false) {
+    notificationMessage.set(message);
+    notificationType.set(success ? "success" : "error");
+    notificationState.set(true);
+    setTimeout(() => { notificationState.set(false) }, 3000);
 }

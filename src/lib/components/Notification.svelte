@@ -16,7 +16,7 @@
 
 {#if $notificationState}
     <button 
-        class={`fixed bottom-[20px] right-[20px] z-10 md:w-[95vw] md:right-1/2 md:translate-x-1/2 rounded-xl min-w-[300px] z-[2]`} 
+        class={`fixed bottom-[20px] right-[20px] z-10 md:w-[95vw] md:right-1/2 md:translate-x-1/2 rounded-xl min-w-[300px] z-[2] transition hover:opacity-50`} 
         transition:slide
         on:click={() => closeNotification()}
     >
@@ -24,13 +24,13 @@
             <div class="flex items-center justify-start gap-4 bg-zinc-900 h-full">
                 <div class="flex items-center justify-center p-2 bg-[#303030] rounded-lg" >
                     {#if type === "warning"}
-                        {@html Warning("#4ade80", undefined)}
-
+                        {@html Warning("#facc15", undefined)}
+                        
                     {:else if type === "error"}
                         {@html Failed("#ef4444", undefined)}
 
                     {:else if type === "success"}
-                        {@html Success("#facc15", undefined)}
+                        {@html Success("#4ade80", undefined)}
                     {/if}
                 </div>
 

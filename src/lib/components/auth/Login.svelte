@@ -4,18 +4,14 @@
     import Notification from "../Notification.svelte";
     import { onMount } from "svelte";
     import { checkSessionValidity } from "$lib/scripts/supabase/client";
-    import { isValidEmail, isValidPassword, setCookie } from "$lib/scripts/functions/misc";
+    import { isValidEmail, isValidPassword, notify, setCookie } from "$lib/scripts/functions/misc";
     import Input from "../custom/Input.svelte";
+    import { notificationState } from "$lib/scripts/stores/values";
 
     let email: string;
     let password: string;
     let buttonDisabled: boolean = false;
 
-    let notification = {
-        state: false,
-        message: "",
-        type: "",
-    }
 
     export async function signInWithPassword(email: string, password: string){
         try {
@@ -36,22 +32,16 @@
                 setCookie(access_token);
                 goto("/dashboard");
 
-            } else if (error) {
-                buttonDisabled = false;
-                notification.state = true;
-                notification.message = error.message || "An unknown error occurred";
-                notification.type = "failed";
-
             } else {
                 buttonDisabled = false;
-                notification.state = true;
-                notification.message = "An unknown error occurred";
-                notification.type = "failed";
-            }
+
+                notify(error?.message ?? "An unknown error occurred");
+
+            } 
 
         } finally {
             setTimeout(() => {
-                notification.state = false;
+                notificationState.set(false);
             }, 3000)
         }
     }
@@ -62,10 +52,6 @@
 
     $: buttonDisabled = !isValidEmail(email) || !isValidPassword(password);
 </script>
-
-{#if notification.state}
-    <Notification message={notification.message} type={notification.type} />
-{/if}
 
 <form class="flex flex-col gap-6 justify-center items-start max-w-[500px] w-full mx-auto h-screen px-4">
     <div class="flex flex-col gap-2" > 
