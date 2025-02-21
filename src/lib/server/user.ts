@@ -1,6 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
 import { SUPABASE_URL, SUPABASE_KEY } from "./auth";
 import type { CustomResponse, MediaType } from "$lib/scripts/types/misc";
+import { messageDiscordWebhook } from "./misc";
+import { DISCORD_WEBHOOK } from "$env/static/private";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -167,6 +169,7 @@ export async function checkViewStatus(username: string){
                 return {
                     last_ip_viewed: data[0].last_ip_viewed,
                     view_count: data[0].view_count,
+                    last_viewed: data[0].last_viewed,
                     status: true,
                 }
 
@@ -184,33 +187,43 @@ export async function checkViewStatus(username: string){
         }
 }
 
-export async function addView(username: string, ip: string){
+export async function addView(username: string, ip: string) {
+    const ipSubnet = ip.split('.').slice(0, 3).join('.');
     const viewCheck = await checkViewStatus(username);
+    const currentTime = Math.floor(Date.now() / 1000);
 
-    if (viewCheck.status && ip !== String(viewCheck.last_ip_viewed) && ip !== "::1"){
+    if (viewCheck.status && !String(viewCheck.last_ip_viewed).startsWith(ipSubnet) || currentTime - viewCheck.last_viewed >= 300 && ip !== "::1"){
         const { data, error } = await supabase
             .from("Users")
-            .update({ view_count: viewCheck.view_count + 1, last_viewed: new Date().toISOString(), last_ip_viewed: ip })
+            .update({ 
+                view_count: viewCheck.view_count + 1, 
+                last_viewed: currentTime,
+                last_ip_viewed: ipSubnet 
+            })
             .eq("username", username);
 
-        if (!error){
+        if (!error) {
+            await messageDiscordWebhook(DISCORD_WEBHOOK, `Someone viewed /${username}\n\nIP Address: ${ip}`);
+
             return {
                 status: true,
-            }
-
+            };
+            
         } else {
             return {
                 message: error.message,
                 status: false,
-            }
+            };
         }
 
     } else {
         return {
             status: false,
-        }
+        };
     }
 }
+
+
 
 export async function updateMedia(
     uuid: string,

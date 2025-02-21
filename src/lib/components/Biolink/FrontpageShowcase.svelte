@@ -230,7 +230,7 @@
         {#if status !== "" && status !== null}
             <div 
                 class="flex items-center justify-center w-[95%] text-center text-[14px] h-4 break-words py-4 leading-[25px]"
-                style="color: {description_color}; text-shadow: 0 0 20.5px {text_color};"
+                style="color: {description_color};"
             >
                 {#if typewriter}
                     <Typewriter 
@@ -293,6 +293,7 @@
 
         <ViewCount 
             view_count={view_count}
+            text_color={text_color}
         />
     </div>
 </div>

@@ -16,6 +16,7 @@
     import { BetaTester, Ceo, DayOne, Og, Premium } from "$lib/scripts/badges";
     import { clipSocials, sparkles, badgeTitles } from "$lib/scripts/globals/biolink";
     import CustomLink from "./CustomLink.svelte";
+  import type { CustomResponse } from "$lib/scripts/types/misc";
 
     export let profile_opacity: string = "";
     export let uid: string = "";
@@ -140,9 +141,20 @@
     }
 
     onMount(async () => {
-        await fetch(`api/view/${username}`, {
-            method: 'POST',
-        })
+        try {
+            const response = await fetch(`api/view/${username}`, {
+                method: 'POST',
+            });
+
+            const data: CustomResponse = await response.json();
+
+            if (data.success){
+                view_count += 1;
+            }
+
+        } catch (error){
+            console.error(error);
+        }
     });
 </script>
 
