@@ -1,12 +1,11 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
     import { supabase } from "$lib/scripts/supabase/client";
-    import Notification from "../Notification.svelte";
     import { onMount } from "svelte";
     import { checkSessionValidity } from "$lib/scripts/supabase/client";
     import { isValidEmail, isValidPassword, notify, setCookie } from "$lib/scripts/functions/misc";
     import Input from "../custom/Input.svelte";
-    import { notificationState } from "$lib/scripts/stores/values";
+    import { currentLink, notificationState } from "$lib/scripts/stores/values";
 
     let email: string;
     let password: string;
@@ -48,6 +47,8 @@
 
     onMount(async () => {
         await checkSessionValidity() ? goto("/dashboard") : null;
+
+        currentLink.set("/login");
     });
 
     $: buttonDisabled = !isValidEmail(email) || !isValidPassword(password);

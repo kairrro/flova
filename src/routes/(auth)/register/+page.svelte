@@ -10,6 +10,7 @@
     import { PUBLIC_TURNSTILE_SITEKEY } from "$env/static/public";
     import Input from "$lib/components/custom/Input.svelte";
     import { notify } from "$lib/scripts/functions/misc";
+    import { currentLink } from "$lib/scripts/stores/values";
 
     export let form: ActionData;
 
@@ -53,6 +54,7 @@
 
     onMount(async () => {
         await checkSessionValidity() ? goto("/dashboard") : null;
+        currentLink.set("/register");
     });
 </script>
 

@@ -5,7 +5,7 @@
 
     onMount(() => {
         currentLink.set("/faq");
-    })
+    });
 </script>
 
 <section 
