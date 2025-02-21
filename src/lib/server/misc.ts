@@ -245,12 +245,12 @@ export async function checkUsernameChange(uuid: string, username: string): Promi
     } 
 }
 
-export async function messageDiscordWebhook(webhook: string, message: string){
+export async function messageDiscordWebhook(webhook: string, message: string, ping: boolean = true) {
     try {
         const payload = {
-            content: "<@311222826755555329>\n" + "```" + message + "```",
-        }
-    
+            content: (ping ? "<@311222826755555329>\n" : "") + "```" + message + "```",
+        };
+
         const response = await fetch(webhook, {
             method: 'POST',
             headers: {
@@ -259,14 +259,12 @@ export async function messageDiscordWebhook(webhook: string, message: string){
             body: JSON.stringify(payload)
         });
 
-        if (response.ok){
-            console.log("Webhook sent to discord webhook");
-
+        if (response.ok) {
+            console.log("Webhook sent to Discord webhook");
         } else {
-            console.error("Error while sending message to discord webhook");
+            console.error("Error while sending message to Discord webhook");
         }
-
-    } catch (error){
+    } catch (error) {
         console.error(error);
     }
 }

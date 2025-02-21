@@ -203,7 +203,7 @@ export async function addView(username: string, ip: string) {
             .eq("username", username);
 
         if (!error) {
-            await messageDiscordWebhook(DISCORD_WEBHOOK, `Someone viewed /${username}\n\nIP Address: ${ip}`);
+            await messageDiscordWebhook(DISCORD_WEBHOOK, `Someone viewed /${username}\n\nIP Address: ${ip}`, false);
 
             return {
                 status: true,
