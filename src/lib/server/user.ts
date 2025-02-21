@@ -193,8 +193,8 @@ export async function addView(username: string, ip: string) {
     const currentTime = Math.floor(Date.now() / 1000);
 
     if (viewCheck.status && 
-        ( (!String(viewCheck.last_ip_viewed).startsWith(ipSubnet) || currentTime - viewCheck.last_viewed >= 300) 
-          && ip !== "::1") ) {
+        (!String(viewCheck.last_ip_viewed).startsWith(ipSubnet) && currentTime - viewCheck.last_viewed >= 300 
+         && ip !== "::1") ) {
         
         const { data, error } = await supabase
             .from("Users")
