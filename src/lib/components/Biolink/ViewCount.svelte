@@ -3,6 +3,7 @@
     import { fade } from "svelte/transition";
 
     export let view_count: string = "";
+    export let text_color: string = "";
 
     let hovered: boolean = false;
 
@@ -25,9 +26,9 @@
         </div>
     {/if}
     <div class="icon">
-        {@html View()}
+        {@html View(text_color, undefined)}
     </div>
-    <p class="font-semibold" >{view_count}</p>
+    <p class="font-semibold text-[{text_color}]" >{view_count}</p>
 </div>
 
 <style>

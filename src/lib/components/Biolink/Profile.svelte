@@ -305,12 +305,14 @@
         {#if username === "kyro"}
             <CustomLink 
                 name="create your own linktree"
+                text_color={text_color}
                 href="/"
             />
         {/if}
 
         <ViewCount 
             view_count={view_count}
+            text_color={text_color}
         />
     </div>
 </div>
