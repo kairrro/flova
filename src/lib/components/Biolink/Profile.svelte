@@ -304,7 +304,7 @@
 
         {#if username === "kyro"}
             <CustomLink 
-                name="sign up at my linktree"
+                name="create your own linktree"
                 href="/"
             />
         {/if}
