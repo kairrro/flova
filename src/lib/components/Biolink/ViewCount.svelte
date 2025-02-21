@@ -10,6 +10,8 @@
     function toggleHover(){
         hovered = !hovered
     }
+
+    console.log(text_color)
 </script>
 
 <div 
@@ -25,10 +27,15 @@
             View Count
         </div>
     {/if}
-    <div class="icon">
+    <div>
         {@html View(text_color, undefined)}
     </div>
-    <p class="font-semibold text-[{text_color}]" >{view_count}</p>
+    <p 
+        class="font-semibold"
+        style="color: {text_color}" 
+    >
+        {view_count}
+    </p>
 </div>
 
 <style>
