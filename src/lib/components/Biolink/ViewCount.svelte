@@ -15,7 +15,7 @@
 </script>
 
 <div 
-    class="relative flex items-center justify-center gap-2 ml-auto" 
+    class="relative flex items-center justify-center gap-[6px] ml-auto" 
     role="note" 
     id="container"
     on:focus={toggleHover} 
@@ -23,7 +23,7 @@
     on:mouseleave={() => hovered = false}
 >
     {#if hovered}
-        <div class="absolute whitespace-nowrap bottom-[25px] text-xs p-[6px] bg-[#00000080] rounded-lg" transition:fade={{ delay: 100, duration: 200 }}>
+        <div class="absolute whitespace-nowrap bottom-[25px] text-[11px] p-[6px] bg-[#00000080] rounded-lg" transition:fade={{ delay: 100, duration: 200 }}>
             View Count
         </div>
     {/if}

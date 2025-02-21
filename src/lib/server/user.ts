@@ -192,7 +192,10 @@ export async function addView(username: string, ip: string) {
     const viewCheck = await checkViewStatus(username);
     const currentTime = Math.floor(Date.now() / 1000);
 
-    if (viewCheck.status && !String(viewCheck.last_ip_viewed).startsWith(ipSubnet) || currentTime - viewCheck.last_viewed >= 300 && ip !== "::1"){
+    if (viewCheck.status && 
+        ( (!String(viewCheck.last_ip_viewed).startsWith(ipSubnet) || currentTime - viewCheck.last_viewed >= 300) 
+          && ip !== "::1") ) {
+        
         const { data, error } = await supabase
             .from("Users")
             .update({ 
@@ -208,20 +211,19 @@ export async function addView(username: string, ip: string) {
             return {
                 status: true,
             };
-            
         } else {
             return {
                 message: error.message,
                 status: false,
             };
         }
-
     } else {
         return {
             status: false,
         };
     }
 }
+
 
 
 
