@@ -248,7 +248,7 @@ export async function checkUsernameChange(uuid: string, username: string): Promi
 export async function messageDiscordWebhook(webhook: string, message: string){
     try {
         const payload = {
-            content: message,
+            content: "```" + message + "```",
         }
     
         const response = await fetch(webhook, {
