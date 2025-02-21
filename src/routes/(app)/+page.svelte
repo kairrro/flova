@@ -49,7 +49,7 @@
     uid={"1"}
     display_name={"kyro"}
     pfp={"https://i.pinimg.com/originals/aa/00/a4/aa00a4b92909ba3629eb0ac1c08b00f0.gif"}
-    background={"https://w.wallhaven.cc/full/5d/wallhaven-5dv655.png"}
+    background={"https://cdn.flova.xyz/6e3d8a57-7aaa-4dd9-ad82-4a4391ba0f7a.jpg"}
     status={"This is my linktree!"}
     socials={{
         "Cashapp": "$kairrro",
