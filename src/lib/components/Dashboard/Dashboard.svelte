@@ -241,17 +241,32 @@
                         <p class="text-xs text-zinc-300" >Max Size Limit: {avatarSizeLimit}MB</p>
                     </div>
                     {#if $profile_picture}
-                        <button 
-                            class="flex items-center justify-center gap-2 bg-[#303030] mr-auto px-6 w-full rounded-lg text-xs py-2 transition hover:opacity-50" 
-                            on:click={() => removeMedia("profile_picture")}
-                            disabled={$mediaButtonsDisabled}
-                        >
-                            {@html Trash()}
-                            <p>Remove Avatar</p>
-                        </button>
+                        <div class="flex items-center gap-2" >
+                            <input 
+                                type="file" 
+                                id="profile_picture" 
+                                class="hidden" 
+                                on:change={(event) => handleFileChange(event, "profile_picture")} 
+                            />
+    
+                            <label 
+                                for="music" 
+                                class="bg-[#303030] text-xs h-10 rounded-lg outline-none w-full cursor-pointer flex items-center justify-center px-3 py-2 transition hover:opacity-50"
+                            >
+                                Change Avatar
+                            </label>
+    
+                            <button 
+                                class="flex items-center gap-2 justify-center bg-[#303030] mr-auto p-2 rounded-lg text-xs py-2 transition hover:opacity-50" 
+                                on:click={() => removeMedia("profile_picture")}
+                                disabled={$mediaButtonsDisabled}
+                            >
+                                {@html Trash()}
+                            </button>
+                        </div>
 
                         <a 
-                            class="text-xs text-zinc-300 transition hover:text-indigo-400" 
+                            class="text-xs text-zinc-300 transition hover:text-indigo-400 truncate md:max-w-[300px]" 
                             href={$profile_picture}
                             target="_blank"
                         >
@@ -273,17 +288,32 @@
                         <p class="text-xs text-zinc-300" >Max Size Limit: {backgroundSizeLimit}MB</p>
                     </div>
                     {#if $background}
-                        <button 
-                            class="flex items-center gap-2 justify-center bg-[#303030] mr-auto w-full rounded-lg text-xs py-2 transition hover:opacity-50" 
-                            on:click={() => removeMedia("background")}
-                            disabled={$mediaButtonsDisabled}
-                        >
-                            {@html Trash()}
-                            <p>Remove Background</p>
-                        </button>
+                        <div class="flex items-center gap-2" >
+                            <input 
+                                type="file" 
+                                id="background" 
+                                class="hidden" 
+                                on:change={(event) => handleFileChange(event, "background")} 
+                            />
+    
+                            <label 
+                                for="music" 
+                                class="bg-[#303030] text-xs h-10 rounded-lg outline-none w-full cursor-pointer flex items-center justify-center px-3 py-2 transition hover:opacity-50"
+                            >
+                                Change Background
+                            </label>
+    
+                            <button 
+                                class="flex items-center gap-2 justify-center bg-[#303030] mr-auto p-2 rounded-lg text-xs py-2 transition hover:opacity-50" 
+                                on:click={() => removeMedia("background")}
+                                disabled={$mediaButtonsDisabled}
+                            >
+                                {@html Trash()}
+                            </button>
+                        </div>
 
                         <a 
-                            class="text-xs text-zinc-300 transition hover:text-indigo-400" 
+                            class="text-xs text-zinc-300 transition hover:text-indigo-400 truncate md:max-w-[300px]" 
                             href={$background}
                             target="_blank"
                         >
@@ -307,17 +337,32 @@
                     <p class="text-xs text-zinc-300" >Max Size Limit: {audioSizeLimit}MB</p>
                 </div>
                 {#if $audio}
-                    <button 
-                        class="flex items-center gap-2 justify-center bg-[#303030] mr-auto w-full rounded-lg text-xs py-2 transition hover:opacity-50" 
-                        on:click={() => removeMedia("audio")}
-                        disabled={$mediaButtonsDisabled}
-                    >
-                        {@html Trash()}
-                        <p>Remove Music</p>
-                    </button>
+                    <div class="flex items-center gap-2" >
+                        <input 
+                            type="file" 
+                            id="music" 
+                            class="hidden" 
+                            on:change={(event) => handleFileChange(event, "audio")} 
+                        />
+
+                        <label 
+                            for="music" 
+                            class="bg-[#303030] text-xs h-10 rounded-lg outline-none w-full cursor-pointer flex items-center justify-center px-3 py-2 transition hover:opacity-50"
+                        >
+                            Change Music
+                        </label>
+
+                        <button 
+                            class="flex items-center gap-2 justify-center bg-[#303030] mr-auto p-2 rounded-lg text-xs py-2 transition hover:opacity-50" 
+                            on:click={() => removeMedia("audio")}
+                            disabled={$mediaButtonsDisabled}
+                        >
+                            {@html Trash()}
+                        </button>
+                    </div>
 
                     <a 
-                        class="text-xs text-zinc-300 transition hover:text-indigo-400" 
+                        class="text-xs text-zinc-300 transition hover:text-indigo-400 truncate md:max-w-[300px]" 
                         href={$audio}
                         target="_blank"
                     >
