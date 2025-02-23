@@ -69,10 +69,6 @@ export const POST: RequestHandler = async ({ request }) => {
           message: "Description can only be up to 120 characters",
         },
         {
-          condition: text_color !== "#f1f1f1" && !premiumStatus.value,
-          message: "You need premium to change your text color.",
-        },
-        {
           condition: String(username).length > 20,
           message: "Your username cannot be more than 20 characters",
         },

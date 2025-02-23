@@ -425,93 +425,33 @@
             </div>
 
             <div class="grid grid-cols-2 lg:grid-cols-1 gap-10" >
-                <div class="flex flex-col gap-2 w-full">
-                    <label for="badge_color" class="text-sm">Badge Color</label>
-                    <div class="flex items-center gap-2">
-                        <div class="relative w-10 h-10">
-                            <input 
-                                type="color" 
-                                class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" 
-                                bind:value={$badge_color}
-                            />
-                            <div class="absolute inset-0 w-[24px] h-[24px] rounded-full pointer-events-none inset-0 m-auto" style="background-color: {$badge_color};"></div>
-                        </div>
-                    
-                        <Input 
-                            name="Badge Color"
-                            id="badge_color"
-                            type="color"
-                            bind:value={$badge_color}
-                            label={false}
-                        />
-                    </div>
-                </div>
+                <Input 
+                    name="Badge Color"
+                    id="badge_color"
+                    type="color"
+                    bind:value={$badge_color}
+                />
 
-                <div class="flex flex-col gap-2 w-full">
-                    <label for="icon_color" class="text-sm">Icon Color</label>
-                    <div class="flex items-center gap-2">
-                        <div class="relative w-10 h-10">
-                            <input 
-                                type="color" 
-                                class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" 
-                                bind:value={$icon_color}
-                            />
-                            <div class="absolute inset-0 w-[24px] h-[24px] rounded-full pointer-events-none inset-0 m-auto" style="background-color: {$icon_color};"></div>
-                        </div>
-                    
-                        <Input 
-                            name="Icon Color"
-                            id="icon_color"
-                            type="color"
-                            bind:value={$icon_color}
-                            label={false}
-                        />
-                    </div>
-                </div>
+                <Input 
+                    name="Icon Color"
+                    id="icon_color"
+                    type="color"
+                    bind:value={$icon_color}
+                />
 
-                <div class="flex flex-col gap-2 w-full">
-                    <label for="username_color" class="text-sm" >Username Color</label>
-                    <div class="flex items-center gap-2">
-                        <div class="relative w-10 h-10">
-                            <input 
-                                type="color" 
-                                class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" 
-                                bind:value={$text_color}
-                            />
-                            <div class="absolute inset-0 w-[24px] h-[24px] rounded-full pointer-events-none inset-0 m-auto" style="background-color: {$text_color};"></div>
-                        </div>
-                    
-                        <Input 
-                            name="Username Color"
-                            id="username_color"
-                            type="color"
-                            bind:value={$text_color}
-                            label={false}
-                        />
-                    </div>
-                </div>
+                <Input 
+                    name="Username Color"
+                    id="username_color"
+                    type="color"
+                    bind:value={$text_color}
+                />
 
-                <div class="flex flex-col gap-2 w-full">
-                    <label for="description" class="text-sm" >Description Color</label>
-                    <div class="flex items-center gap-2">
-                        <div class="relative w-10 h-10">
-                            <input 
-                                type="color" 
-                                class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" 
-                                bind:value={$description_color}
-                            />
-                            <div class="absolute inset-0 w-[24px] h-[24px] rounded-full pointer-events-none inset-0 m-auto" style="background-color: {$description_color};"></div>
-                        </div>
-                    
-                        <Input 
-                            name="Description Color"
-                            id="description_color"
-                            type="color"
-                            bind:value={$description_color}
-                            label={false}
-                        />
-                    </div>
-                </div>
+                <Input 
+                    name="Description Color"
+                    id="description_color"
+                    type="color"
+                    bind:value={$description_color}
+                />
             </div>
 
             <Dropdown 

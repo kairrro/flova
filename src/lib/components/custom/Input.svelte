@@ -38,6 +38,31 @@
             disabled={disabled}
         />
 
+    {:else if type === 'color'}
+        <div class="flex items-center gap-2">
+            <div class="relative w-10 h-10">
+                <input 
+                    type="color" 
+                    id={id}
+                    class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" 
+                    bind:value={value}
+                    disabled={disabled}
+                />
+                <div 
+                    class="absolute inset-0 w-[24px] h-[24px] rounded-full pointer-events-none inset-0 m-auto" 
+                    style="background-color: {value};"
+                ></div>
+            </div>
+
+            <input 
+                type="text"
+                id={id}
+                class="bg-[#212121] text-sm pl-2 h-10 rounded-lg outline-none w-full {extraClass}"
+                bind:value={value}
+                disabled={disabled}
+            />
+        </div>
+
     {:else if type === 'password'}
         <input 
             name={id}
