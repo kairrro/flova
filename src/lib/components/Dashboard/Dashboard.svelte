@@ -250,7 +250,7 @@
                             />
     
                             <label 
-                                for="music" 
+                                for="profile_picture" 
                                 class="bg-[#303030] text-xs h-10 rounded-lg outline-none w-full cursor-pointer flex items-center justify-center px-3 py-2 transition hover:opacity-50"
                             >
                                 Change Avatar
