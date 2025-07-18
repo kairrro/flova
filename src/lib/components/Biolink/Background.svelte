@@ -6,7 +6,7 @@
 </script>
 
 {#if isVideo}
-    <video class="background" loop preload="auto" bind:paused={paused} bind:muted={isAudio}>
+    <video class="background" playsinline loop preload="auto" bind:paused={paused} bind:muted={isAudio}>
         <source {src} type="video/mp4">
         <track kind="captions">
     </video>
