@@ -130,7 +130,6 @@ export async function fetchUser(uuid: string){
     }
 }
 
-
 export async function getPremium(username: string){
     const { data, error } = await supabase
         .from("Users")
@@ -224,9 +223,6 @@ export async function addView(username: string, ip: string) {
     }
 }
 
-
-
-
 export async function updateMedia(
     uuid: string,
     url: string,
@@ -265,4 +261,25 @@ export async function removeMedia(
     return error
         ? { message: error.message, success: false }
         : { message: `${type} removed successfully.`, success: true };
+}
+
+
+export async function getColumnOfUser(column: string, uuid: string){
+    const { data, error } = await supabase
+        .from("Users")
+        .select(column)
+        .eq('uuid', uuid)
+      
+    if (data && data.length > 0){
+        return {
+            value : data[0],
+            success: true,
+        }
+
+    } else {
+        return {
+            value: null,
+            success: false,
+        }
+    }
 }

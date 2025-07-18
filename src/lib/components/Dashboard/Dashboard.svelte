@@ -2,8 +2,7 @@
     import { 
         description, profile_picture, user, display_name, profile_opacity, text_color, premium, background, 
         audio, greeting, typewriter, discord_id, badge_color, sparkle, icon_color, description_color,
-        mediaButtonsDisabled, notificationMessage, notificationType, notificationState,
-        currentLink
+        mediaButtonsDisabled, currentLink
     } from "$lib/scripts/stores/values";
     import { backgroundFileTypes, avatarFileTypes, audioFileTypes, sparkleTitles } from "$lib/scripts/globals/misc";
     import { Save, Trash } from "$lib/scripts/logos";
@@ -113,17 +112,17 @@
             if (sizeInMB > sizeLimit) {
                 notify(`File size exceeds the limit of ${sizeLimit}MB`);
 
-            return;
+                return;
+            }
+
+            dispatch("change", { file });
+
+            const reader = new FileReader();
+            reader.onload = () => uploadFile(file, type);
+            reader.onerror = () => console.error("File reading error");
+            reader.readAsArrayBuffer(file);
         }
-
-        dispatch("change", { file });
-
-        const reader = new FileReader();
-        reader.onload = () => uploadFile(file, type);
-        reader.onerror = () => console.error("File reading error");
-        reader.readAsArrayBuffer(file);
     }
-}
 
     async function updateAccount(){
         try {
@@ -196,7 +195,7 @@
     })
 </script>
 
-    
+
 <section class="mb-20">
     <div class="welcome">
         <img 

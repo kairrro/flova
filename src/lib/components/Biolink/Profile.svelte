@@ -67,12 +67,22 @@
     function openPage() {
         isOpen = true;
         paused = false;
-        const profileElement = document.getElementById('profile');
 
-        if (profileElement){
+        const profileElement = document.getElementById('profile');
+        const videoEl = document.querySelector("video");
+
+        if (profileElement) {
             profileElement.classList.add('drop-down');
         }
+
+        if (videoEl) {
+            videoEl.muted = false;
+            videoEl.play().catch(err => {
+                console.warn("Safari autoplay blocked with sound", err);
+            });
+        }
     }
+
 
     function toggleUID(){
         uidOpen = !uidOpen;
@@ -211,7 +221,7 @@
         <div class="flex flex-col items-center">
             {#if uidOpen}
                 <div 
-                    class="flex items-center px-2 bg-[#030303ba] absolute uid rounded-lg text-sm top-[65px] z-30" 
+                    class="flex items-center px-2 py-[2px] bg-[#030303ba] absolute uid rounded-lg text-xs top-[65px] z-3" 
                     transition:fade={{ delay: 100, duration: 200 }}
                 >
                     UID {uid}

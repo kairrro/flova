@@ -29,7 +29,7 @@ export async function signInWithPassword(email: string, password: string){
     }
 }
 
-export async function verifyToken(token: string){
+export async function verifyToken(token: string): Promise<CustomResponse>{
     if (token){
         const { data, error } = await supabase.auth.getUser(token);
 
@@ -55,7 +55,7 @@ export async function verifyToken(token: string){
 }
 
 interface CustomResponse {
-    message: string;
+    message: any;
     status: boolean
 }
 

@@ -1,6 +1,5 @@
 import { BetaTester, Og, Ceo, Premium } from "../badges";
 
-export let bunnycdnURL = "https://ny.storage.bunnycdn.com/flova"
 export let description: string = "No description added yet";
 export let siteURL: string = "";
 export let SITE_NAME: string = "Flova";

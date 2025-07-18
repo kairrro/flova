@@ -1,11 +1,20 @@
 import type { RequestHandler } from "@sveltejs/kit";
 import { extractTokenFromCookies } from "$lib/server/misc";
 import { verifyToken } from "$lib/server/auth";
-import { uploadFile } from "$lib/server/bunnycdn";
+import { deleteFile, uploadFile } from "$lib/server/bunnycdn";
 import type { CustomResponse } from "$lib/scripts/types/misc";
 import { updateMedia } from "$lib/server/user";
+import { getColumnOfUser } from "$lib/server/user";
+import { extractFileNameFromUrl } from "$lib/scripts/functions/misc";
+import type { MediaType } from "$lib/server/types";
 
-export const POST: RequestHandler = async ({ request }) => {
+export const POST: RequestHandler = async ({ request, params }) => {
+    const media: MediaType = params?.media as MediaType;
+
+    if (media === undefined) {
+        throw new Error("Media parameter is missing.");
+    }
+
     let message;
     let statusCode;
 
@@ -28,6 +37,17 @@ export const POST: RequestHandler = async ({ request }) => {
 
             const fileName = file.name;
             const fileExtension = fileName.split('.').pop();
+            
+            const existingMedia = await getColumnOfUser("audio", uuid);
+
+            if (existingMedia.success && existingMedia.value && 'audio' in existingMedia.value) {
+                const fileName = extractFileNameFromUrl(existingMedia.value.audio);
+
+                if (fileName) {
+                    const result = await deleteFile(fileName);
+
+                }
+            }
 
             const uploadResult: CustomResponse = await uploadFile(crypto.randomUUID() + "." + fileExtension, file); 
 
@@ -35,7 +55,7 @@ export const POST: RequestHandler = async ({ request }) => {
             statusCode = 200;
 
             if (uploadResult.success){
-                await updateMedia(uuid, uploadResult.message, "audio");
+                await updateMedia(uuid, uploadResult.message, media);
             }
 
         } else {

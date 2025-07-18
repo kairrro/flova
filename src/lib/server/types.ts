@@ -1,0 +1,1 @@
+export type MediaType = "background" | "profile_picture" | "audio";

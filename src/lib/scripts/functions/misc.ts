@@ -83,3 +83,13 @@ export function notify(message: string, success: boolean = false) {
     notificationState.set(true);
     setTimeout(() => { notificationState.set(false) }, 3000);
 }
+
+export function extractFileNameFromUrl(url: any): string | null {
+    if (!url) return null; 
+    try {
+        return new URL(url).pathname.split("/").pop() || null;
+    } catch (error) {
+        console.error("Invalid URL:", error);
+        return null;
+    }
+}

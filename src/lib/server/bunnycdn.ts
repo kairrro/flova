@@ -1,5 +1,5 @@
 import { BUNNYCDN_API_KEY } from "$env/static/private";
-import { bunnycdnURL } from "$lib/scripts/globals/misc";
+import { bunnycdnURL } from "$lib/scripts/globals/bunnycdn";
 import type { CustomResponse } from "$lib/scripts/types/misc";
 
 export async function uploadFile(fileName: string, fileData: any): Promise<CustomResponse>{
@@ -35,21 +35,42 @@ export async function uploadFile(fileName: string, fileData: any): Promise<Custo
     }
 }
 
-export async function getFile(fileName: string, fileData: any){
+export async function getFile(fileName: string) {
     try {
         const response = await fetch(`${bunnycdnURL}/${fileName}`, {
             method: "GET",
-            headers: {
-                "AccessKey": BUNNYCDN_API_KEY,
-            },
+            headers: { "AccessKey": BUNNYCDN_API_KEY },
         });
 
-        console.log(await response.text());
+        return {
+            success: response.ok, 
+            message: response.ok ? "File retrieved successfully" : `Error: ${response.statusText}`,
+        };
 
-    } catch (error){
+    } catch (error) {
         return {
             success: false,
-            message: error,
-        }
+            message: error instanceof Error ? error.message : "An unknown error occurred",
+        };
+    }
+}
+
+export async function deleteFile(fileName: string) {
+    try {
+        const response = await fetch(`${bunnycdnURL}/${fileName}`, {
+            method: "DELETE",
+            headers: { "AccessKey": BUNNYCDN_API_KEY },
+        });
+
+        return {
+            success: response.ok, 
+            message: response.ok ? "File deleted successfully" : `Error: ${response.statusText}`,
+        };
+        
+    } catch (error) {
+        return {
+            success: false,
+            message: error instanceof Error ? error.message : "An unknown error occurred",
+        };
     }
 }

@@ -165,7 +165,7 @@
     <Clipboard message={clipSocials[clipboardState]}/>
 {/if}
 
-<div class="absolute flex flex-col justify-center items-center gap-[6px] h-[95vh] w-full px-2 z-[3]">
+<div class="absolute flex flex-col justify-start mt-20 items-center gap-[6px] h-[95vh] w-full px-2 z-[3] md:h-[150vh]">
     <div class="flex flex-col justify-center items-center gap-[16px] py-[20px] px-[12px] rounded-2xl drop-down w-full max-w-[600px]" 
         style={`display: ${isOpen ? "flex" : "none"}; 
                 background: rgba(17, 17, 17, ${Number(profile_opacity) / 100}); 
