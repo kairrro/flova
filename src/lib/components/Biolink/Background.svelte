@@ -15,7 +15,7 @@
 {/if}
 
 <style>
-    .background {
+    .background, video {
         position: fixed;
         background-position: center;
         background-repeat: no-repeat;
@@ -28,7 +28,7 @@
         z-index: 0;
     }
 
-    .background::before {
+    .background::before, video::before {
         position: absolute;
         width: 100vw;
         height: 100vh;

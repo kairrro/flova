@@ -67,22 +67,12 @@
     function openPage() {
         isOpen = true;
         paused = false;
-
         const profileElement = document.getElementById('profile');
-        const videoEl = document.querySelector("video");
 
-        if (profileElement) {
+        if (profileElement){
             profileElement.classList.add('drop-down');
         }
-
-        if (videoEl) {
-            videoEl.muted = false;
-            videoEl.play().catch(err => {
-                console.warn("Safari autoplay blocked with sound", err);
-            });
-        }
     }
-
 
     function toggleUID(){
         uidOpen = !uidOpen;
