@@ -305,7 +305,7 @@
     transition:fade
 >
     <div class="flex flex-col items-center justify-center gap-[14px] text-left md:text-center pt-40">
-        <p class="text-5xl text-[#ffffff] font-semibold md:text-[11vw] md:text-3xl">
+        <p class="text-5xl text-[#ffffff] font-semibold md:text-3xl">
             One link for all your pages
         </p>
         
