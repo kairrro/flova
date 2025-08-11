@@ -45,12 +45,12 @@
 
 <FrontpageShowcase
     username={"kyro"}
-    profile_opacity={"20"}
+    profile_opacity={"40"}
     uid={"1"}
     display_name={"kyro"}
-    pfp={"https://i.pinimg.com/originals/aa/00/a4/aa00a4b92909ba3629eb0ac1c08b00f0.gif"}
-    background={"https://cdn.flova.xyz/6e3d8a57-7aaa-4dd9-ad82-4a4391ba0f7a.jpg"}
-    status={"This is my linktree!"}
+    pfp={"https://flova.b-cdn.net/3d2324dfdb9ad2776f00c9dfd7932fce.jpg"}
+    background={"https://flova.b-cdn.net/damn.webp"}
+    status={"Sample Flova Page"}
     socials={{
         "Cashapp": "$kairrro",
         "Custom": "https://honewebservices.com",

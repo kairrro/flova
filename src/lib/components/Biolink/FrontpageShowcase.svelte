@@ -165,7 +165,7 @@
     <Clipboard message={clipSocials[clipboardState]}/>
 {/if}
 
-<div class="absolute flex flex-col justify-start mt-20 items-center gap-[6px] h-[95vh] w-full px-2 z-[3] md:h-[150vh]">
+<div class="absolute flex flex-col justify-start mt-[130px] items-center gap-[6px] h-[95vh] w-full px-2 z-[3] md:h-[150vh]">
     <div class="flex flex-col justify-center items-center gap-[16px] py-[20px] px-[12px] rounded-2xl drop-down w-full max-w-[600px]" 
         style={`display: ${isOpen ? "flex" : "none"}; 
                 background: rgba(17, 17, 17, ${Number(profile_opacity) / 100}); 
@@ -298,22 +298,23 @@
     </div>
 </div>
 
-<div class="absolute w-screen h-screen opacity-50 z-[10] bg-black" ></div>
+<div class="absolute w-screen h-screen z-[10]" ></div>
 
 <div 
-    class="absolute max-w-[1279px] w-full mx-auto flex flex-col items-start gap-10 z-10 pt-40 inset-0 top-[200px] px-4 md:left-0"
+    class="absolute max-w-[1279px] w-full mx-auto flex flex-col md:items-center gap-10 z-10 pt-[130px] inset-0 top-[200px] px-4 md:left-0"
     transition:fade
 >
-    <div class="flex flex-col items-start gap-4 text-left">
-        <p class="text-6xl text-[#ffffff] font-bold md:text-[11vw] whitespace-nowrap">
-            Flova
+    <div class="flex flex-col items-center justify-center gap-[14px] text-left md:text-center pt-40">
+        <p class="text-5xl text-[#ffffff] font-semibold md:text-[11vw] md:text-3xl">
+            One link for all your pages
         </p>
-
-        <p class="flex items-center text-[#ffffff] text-left font-light leading-loose xs:text-[3vw] max-w-[500px] text-sm">
-            Connect all your social media platforms into one place with ease and seamless customization.
+        
+        <p class="flex items-center text-[#ffffff] text-center font-light leading-[27px] xs:text-[3vw] max-w-[500px]">
+            Keep your important links on one page. Share this single link anywhere.
         </p>
+        
 
-        <div class="flex items-center h-full md:flex-col md:items-start md:gap-4">
+        <div class="flex items-center h-full md:flex-col md:items-center md:gap-4 pt-4">
             <div class="flex items-center h-full" >
                 <div 
                     class="flex items-center justify-center bg-[#3c3c3c45] border border-[1px] border-[#2a2a2a] h-full px-4 text-sm py-2"
@@ -329,21 +330,17 @@
                 />
             </div>
             <a
-                class="display items-center justify-center border border-[1px] border-[#2a2a2a] h-full text-sm px-4 duration-300 transition hover:border-indigo-700 py-2" 
+                class="display items-center justify-center border border-[1px] border-[#2a2a2a] h-full text-sm px-4 duration-300 transition border-indigo-700 py-2 hover:bg-indigo-700" 
                 target="_blank"
                 href="/register?username={accountCreationUser}"
             >
-                Claim Username
+                Make my linktree
             </a>
         </div>
     </div>
 </div>
 
 <style>
-    a {
-        cursor: default;
-    }
-
     img, #status, .icon, h2, p {
         -webkit-user-drag: none;
         user-select: none;
