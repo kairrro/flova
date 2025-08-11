@@ -165,7 +165,7 @@
     <Clipboard message={clipSocials[clipboardState]}/>
 {/if}
 
-<div class="absolute flex flex-col justify-start mt-[130px] items-center gap-[6px] h-[95vh] w-full px-2 z-[3] md:h-[150vh] py-10">
+<div class="absolute flex flex-col justify-start mt-[110px] items-center gap-[6px] w-full px-2 z-[3] md:h-[150vh] py-10">
     <div class="flex flex-col justify-center items-center gap-[16px] py-[20px] px-[12px] rounded-2xl drop-down w-full max-w-[600px]" 
         style={`display: ${isOpen ? "flex" : "none"}; 
                 background: rgba(17, 17, 17, ${Number(profile_opacity) / 100}); 
@@ -301,10 +301,10 @@
 <div class="absolute w-screen h-screen z-[10]" ></div>
 
 <div 
-    class="absolute max-w-[1279px] w-full mx-auto flex flex-col md:items-center gap-10 z-10 pt-[130px] inset-0 top-[200px] px-4 md:left-0"
+    class="absolute max-w-[1279px] w-full mx-auto flex flex-col md:items-center gap-10 z-10 pt-[110px] inset-0 top-[200px] px-4 md:left-0"
     transition:fade
 >
-    <div class="flex flex-col items-center justify-center gap-[14px] text-left md:text-center pt-40">
+    <div class="flex flex-col items-center justify-center gap-[14px] text-left md:text-center pt-[200px]">
         <p class="text-5xl text-[#ffffff] font-semibold md:text-3xl">
             One link for all your pages
         </p>
@@ -313,7 +313,6 @@
             Keep your important links on one page. Share this single link anywhere.
         </p>
         
-
         <div class="flex items-center h-full md:flex-col md:items-center md:gap-4 pt-4">
             <div class="flex items-center h-full" >
                 <div 

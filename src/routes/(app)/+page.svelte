@@ -66,6 +66,7 @@
     sparkle={"yellow"}
     view_count={"300"}
     description_color={"#f1f1f1"}
+    status={"Sample Flova Page"}
 />
 
 <!-- discord_username={data.discord_username}
