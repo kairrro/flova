@@ -50,7 +50,7 @@
     display_name={"kyro"}
     pfp={"https://flova.b-cdn.net/3d2324dfdb9ad2776f00c9dfd7932fce.jpg"}
     background={"https://flova.b-cdn.net/damn.webp"}
-    status={"Sample Flova Page"}
+    
     socials={{
         "Cashapp": "$kairrro",
         "Custom": "https://honewebservices.com",
