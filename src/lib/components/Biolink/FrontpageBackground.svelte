@@ -21,6 +21,7 @@
         background-size: cover;
         width: 100vw;
         height: 110vh;
+        max-height: 900px;
         object-fit: cover;
         z-index: 0;
     }
