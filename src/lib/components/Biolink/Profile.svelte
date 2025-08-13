@@ -16,7 +16,7 @@
     import { BetaTester, Ceo, DayOne, Og, Premium } from "$lib/scripts/badges";
     import { clipSocials, sparkles, badgeTitles } from "$lib/scripts/globals/biolink";
     import CustomLink from "./CustomLink.svelte";
-  import type { CustomResponse } from "$lib/scripts/types/misc";
+    import type { CustomResponse } from "$lib/scripts/types/misc";
 
     export let profile_opacity: string = "";
     export let uid: string = "";
@@ -46,6 +46,9 @@
     export let discord_status: string | null = "";
     export let discord_custom_status: string | null = "";
     export let discord_icon: string | null = "";
+
+    // Plugins
+    export let bannerImage: string = "";
     
     // States
     let isOpen = false;
@@ -195,17 +198,18 @@
     <Clipboard message={clipSocials[clipboardState]}/>
 {/if}
 
-<div class="flex flex-col justify-center items-center gap-[6px] h-[95vh] w-full px-2 z-[3]">
-    <div class="flex flex-col justify-center items-center gap-[16px] py-[14px] px-[12px] rounded-2xl drop-down w-full max-w-[600px]" 
+<div class="flex flex-col justify-center items-center h-[95vh] w-full px-2">
+    <div 
+        class={`flex flex-col justify-center items-center gap-[16px] rounded-b-2xl drop-down w-full max-w-[600px] ${bannerImage ? 'py-[14px] px-[12px]' : 'py-[14px] px-[12px]'}`}
         style={`display: ${isOpen ? "flex" : "none"}; 
                 background: rgba(17, 17, 17, ${Number(profile_opacity) / 100}); 
                 ${profile_opacity !== "0" ? "backdrop-filter: blur(32px);" : ""}`}
-                id="profile"
-        >
+        id="profile"
+    >
         <img 
             src={pfp === null || pfp === "" ? "/assets/default.jpg" : pfp} 
             alt="pfp" 
-            class="w-[120px] h-[120px] mt-[-70px] object-cover rounded-full"
+            class="w-[120px] h-[120px] mt-[-70px] object-cover rounded-full z-50"
         />
 
         <div class="flex flex-col items-center">

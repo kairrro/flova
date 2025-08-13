@@ -165,7 +165,7 @@
     <Clipboard message={clipSocials[clipboardState]}/>
 {/if}
 
-<div class="absolute flex flex-col justify-start mt-[110px] items-center gap-[6px] w-full px-2 z-[3] md:h-[150vh] py-10">
+<div class="absolute flex flex-col justify-start mt-[110px] items-center gap-[6px] w-full px-2 z-[3] md:h-[150vh] py-10 md:top-[330px]">
     <div class="flex flex-col justify-center items-center gap-[16px] py-[20px] px-[12px] rounded-2xl drop-down w-full max-w-[600px]" 
         style={`display: ${isOpen ? "flex" : "none"}; 
                 background: rgba(17, 17, 17, ${Number(profile_opacity) / 100}); 
@@ -301,41 +301,39 @@
 <div class="absolute w-screen h-screen z-[10]" ></div>
 
 <div 
-    class="absolute max-w-[1279px] w-full mx-auto flex flex-col md:items-center gap-10 z-10 pt-[110px] inset-0 top-[200px] px-4 md:left-0"
+    class="absolute max-w-[1279px] w-full mx-auto flex flex-col items-center gap-10 z-10 inset-0 top-[200px] px-4 md:left-0"
     transition:fade
 >
-    <div class="flex flex-col items-center justify-center gap-[14px] text-left md:text-center pt-[200px]">
-        <p class="text-5xl text-[#ffffff] font-semibold md:text-3xl">
+    <div class="flex flex-col items-center gap-[14px] text-left md:text-center pt-[320px] md:pt-[0] md:mt-[-80px]">
+        <p class="text-5xl text-white font-semibold md:text-3xl">
             One link for all your pages
         </p>
         
-        <p class="flex items-center text-[#ffffff] text-center font-light leading-[27px] xs:text-[3vw] max-w-[500px]">
+        <p class="text-white text-center font-light leading-[27px] xs:text-[3vw] max-w-[500px]">
             Keep your important links on one page. Share this single link anywhere.
         </p>
-        
-        <div class="flex items-center h-full md:flex-col md:items-center md:gap-4 pt-4">
-            <div class="flex items-center h-full" >
-                <div 
-                    class="flex items-center justify-center bg-[#3c3c3c45] border border-[1px] border-[#2a2a2a] h-full px-4 text-sm py-2"
-                >
-                    flova.xyz/
-                </div>
-                <input 
-                    type="text" 
-                    placeholder="username" 
-                    id="username" 
-                    bind:value={accountCreationUser}
-                    class="pl-4 text-sm outline-none bg-[#21212180] h-full py-2"
-                />
+    </div>
+    
+    <div class="flex items-center gap-4 md:flex-col w-full max-w-md">
+        <div class="flex w-full">
+            <div class="flex items-center bg-[#3c3c3c45] border border-[#2a2a2a] px-4 text-sm py-2">
+                flova.xyz/
             </div>
-            <a
-                class="display items-center justify-center border border-[1px] border-[#2a2a2a] h-full text-sm px-4 duration-300 transition border-indigo-700 py-2 hover:bg-indigo-700" 
-                target="_blank"
-                href="/register?username={accountCreationUser}"
-            >
-                Make my linktree
-            </a>
+            <input 
+                type="text" 
+                placeholder="username" 
+                id="username" 
+                bind:value={accountCreationUser}
+                class="w-full pl-4 text-sm outline-none bg-[#21212180] h-full py-2"
+            />
         </div>
+        <a
+            class="w-full text-center border border-indigo-700 text-sm px-4 py-2 duration-300 transition hover:bg-indigo-700" 
+            target="_blank"
+            href="/register?username={accountCreationUser}"
+        >
+            Make my linktree
+        </a>
     </div>
 </div>
 
