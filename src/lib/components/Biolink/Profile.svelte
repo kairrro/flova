@@ -38,16 +38,12 @@
     export let artist: string | null = "";
     export let song: string | null = "";
 
-    console.log(socials);
-    console.log(badges);
-
     export let discord_username: string | null = "";
     export let discord_pfp: string | null = "";
     export let discord_status: string | null = "";
     export let discord_custom_status: string | null = "";
     export let discord_icon: string | null = "";
 
-    // Plugins
     export let bannerImage: string = "";
     
     // States
@@ -198,18 +194,18 @@
     <Clipboard message={clipSocials[clipboardState]}/>
 {/if}
 
-<div class="flex flex-col justify-center items-center h-[95vh] w-full px-2">
-    <div 
-        class={`flex flex-col justify-center items-center gap-[16px] rounded-b-2xl drop-down w-full max-w-[600px] ${bannerImage ? 'py-[14px] px-[12px]' : 'py-[14px] px-[12px]'}`}
+<div class="flex flex-col justify-center items-center h-[95vh] w-full px-2 z-[3]">
+    
+    <div class="flex flex-col justify-center items-center gap-[16px] py-[14px] px-[12px] rounded-b-2xl drop-down w-full max-w-[600px]" 
         style={`display: ${isOpen ? "flex" : "none"}; 
                 background: rgba(17, 17, 17, ${Number(profile_opacity) / 100}); 
                 ${profile_opacity !== "0" ? "backdrop-filter: blur(32px);" : ""}`}
-        id="profile"
-    >
+                id="profile"
+        >
         <img 
             src={pfp === null || pfp === "" ? "/assets/default.jpg" : pfp} 
             alt="pfp" 
-            class="w-[120px] h-[120px] mt-[-70px] object-cover rounded-full z-50"
+            class="w-[120px] h-[120px] mt-[-70px] object-cover rounded-full"
         />
 
         <div class="flex flex-col items-center">
