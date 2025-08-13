@@ -328,7 +328,7 @@
             />
         </div>
         <a
-            class="w-full text-center border border-indigo-700 text-sm px-4 py-2 duration-300 transition hover:bg-indigo-700" 
+            class="w-full text-center text-sm px-4 py-2 duration-300 transition bg-indigo-700" 
             target="_blank"
             href="/register?username={accountCreationUser}"
         >

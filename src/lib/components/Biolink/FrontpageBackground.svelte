@@ -20,7 +20,7 @@
         background-repeat: no-repeat;
         background-size: cover;
         width: 100vw;
-        height: 110vh;
+        height: 115vh;
         max-height: 900px;
         object-fit: cover;
         z-index: 0;
