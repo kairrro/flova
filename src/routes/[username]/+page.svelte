@@ -33,7 +33,6 @@
         discord_status={data.discord_status}
         song={data.song}
         artist={data.artist}
-        bannerImage="https://i.pinimg.com/originals/d7/04/e5/d704e5e9a06288ab92d65d14aedfaa68.gif"
     />
 {:else}
     <UserNotExist />
