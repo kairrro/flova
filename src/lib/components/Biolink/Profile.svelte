@@ -202,11 +202,11 @@
 <div class="flex flex-col justify-center items-center h-[95vh] w-full px-2 z-[3]" id="profile">
     <div class="flex flex-col items-center justify-center drop-down w-full mx-auto">
         {#if isOpen && bannerImage}
-            <div class="relative w-full max-w-[600px] drop-down max-h-[125px]">
+            <div class="relative flex flex-col justify-end w-full max-w-[600px] drop-down h-[125px]">
                 <img 
                     src={bannerImage} 
                     alt="banner" 
-                    class="z-[2] h-full w-full rounded-t-2xl object-cover"
+                    class="z-[2] w-full rounded-t-2xl object-cover h-full"
                 />
                 <img 
                     src={pfp === null || pfp === "" ? "/assets/default.jpg" : pfp} 
@@ -214,7 +214,7 @@
                     class="absolute left-1/2 transform -translate-x-1/2 bottom-[-60px] w-[120px] h-[120px] object-cover rounded-full z-[10]"
                 />
             </div>
-        {/if}
+        {/if}   
         
         <div class="flex flex-col justify-center items-center gap-[16px] py-[14px] px-[12px] drop-down w-full max-w-[600px] {bannerImage ? "pt-[70px]" : ""}"
             class:rounded-b-2xl={bannerImage}
