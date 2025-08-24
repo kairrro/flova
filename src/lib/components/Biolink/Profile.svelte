@@ -155,6 +155,11 @@
             console.error(error);
         }
     });
+
+    // Custom banner for me
+    if (username === "kyro"){
+        bannerImage = "https://i.pinimg.com/736x/b0/e1/7a/b0e17abb57d7e4394f9a2f87046abbec.jpg";
+    }
 </script>
 
 <svelte:head>
@@ -194,138 +199,159 @@
     <Clipboard message={clipSocials[clipboardState]}/>
 {/if}
 
-<div class="flex flex-col justify-center items-center h-[95vh] w-full px-2 z-[3]">
-    
-    <div class="flex flex-col justify-center items-center gap-[16px] py-[14px] px-[12px] rounded-b-2xl drop-down w-full max-w-[600px]" 
-        style={`display: ${isOpen ? "flex" : "none"}; 
-                background: rgba(17, 17, 17, ${Number(profile_opacity) / 100}); 
-                ${profile_opacity !== "0" ? "backdrop-filter: blur(32px);" : ""}`}
-                id="profile"
-        >
-        <img 
-            src={pfp === null || pfp === "" ? "/assets/default.jpg" : pfp} 
-            alt="pfp" 
-            class="w-[120px] h-[120px] mt-[-70px] object-cover rounded-full"
-        />
+<div class="flex flex-col justify-center items-center h-[95vh] w-full px-2 z-[3]" id="profile">
+    <div class="flex flex-col items-center justify-center drop-down w-full mx-auto">
+        {#if isOpen && bannerImage}
+            <div class="relative w-full max-w-[600px] drop-down max-h-[125px]">
+                <img 
+                    src={bannerImage} 
+                    alt="banner" 
+                    class="z-[2] h-full w-full rounded-t-2xl object-cover"
+                />
+                <img 
+                    src={pfp === null || pfp === "" ? "/assets/default.jpg" : pfp} 
+                    alt="pfp" 
+                    class="absolute left-1/2 transform -translate-x-1/2 bottom-[-60px] w-[120px] h-[120px] object-cover rounded-full z-[10]"
+                />
+            </div>
+        {/if}
+        
+        <div class="flex flex-col justify-center items-center gap-[16px] py-[14px] px-[12px] drop-down w-full max-w-[600px] {bannerImage ? "pt-[70px]" : ""}"
+            class:rounded-b-2xl={bannerImage}
+            class:rounded-2xl={!bannerImage}
+            style={`display: ${isOpen ? "flex" : "none"}; 
+                    background: rgba(17, 17, 17, ${Number(profile_opacity) / 100}); 
+                    ${profile_opacity !== "0" ? "backdrop-filter: blur(32px);" : ""}`}
+            >
 
-        <div class="flex flex-col items-center">
-            {#if uidOpen}
-                <div 
-                    class="flex items-center px-2 py-[2px] bg-[#030303ba] absolute uid rounded-lg text-xs top-[65px] z-3" 
-                    transition:fade={{ delay: 100, duration: 200 }}
-                >
-                    UID {uid}
+            {#if !bannerImage}
+                <img 
+                    src={pfp === null || pfp === "" ? "/assets/default.jpg" : pfp} 
+                    alt="pfp" 
+                    class="w-[120px] h-[120px] object-cover rounded-full z-[5]"
+                    class:mt-[30px]={bannerImage}
+                />
+            {/if}
+
+            <div class="flex flex-col items-center">
+                {#if uidOpen}
+                    <div 
+                        class="flex items-center px-2 py-[2px] bg-[#030303ba] absolute uid rounded-lg text-xs top-[65px] z-3" 
+                        transition:fade={{ delay: 100, duration: 200 }}
+                    >
+                        UID {uid}
+                    </div>
+                {/if}
+                <div class="flex" style="{sparkleOption}">
+                    <h2 
+                        style="color: {text_color}; text-shadow: 0 0 16.5px {text_color};" 
+                        on:focus={toggleUID} 
+                        on:mouseover={toggleUID} 
+                        on:mouseleave={toggleUID} 
+                        class="text-xl font-medium px-2"
+                    >
+                        {display_name}
+                    </h2>
+                </div>
+            </div>
+
+            {#if badges && Object.keys(badges).length > 0}
+                <div class="flex items-center bg-black/70 rounded-[20px] py-1.5 px-5 gap-2.5">
+                    {#each badges as badge}
+                        <div class="relative flex items-center">
+                            {#if hoveredBadge === badge}
+                                <div 
+                                    class="absolute bottom-7 left-1/2 transform -translate-x-1/2 bg-black/73 rounded-md text-xs px-2 py-1 whitespace-nowrap" 
+                                    transition:fade={{ delay: 100,  duration: 200 }}
+                                >
+                                    {badgeTitles[badge]}
+                                </div>
+                            {/if}
+                            <div 
+                                class="relative flex items-center justify-center" 
+                                style="filter: drop-shadow(0 0 12px {badge_color}80);" 
+                                role="presentation" 
+                                on:mouseover={() => badgeHover(badge)} 
+                                on:focus={() => badgeHover(badge)} 
+                                on:mouseleave={() => badgeHover(null)}
+                            >
+                                {@html badgeIcons[badge.toLowerCase()]}
+                            </div>
+                        </div>
+                    {/each}
                 </div>
             {/if}
-            <div class="flex" style="{sparkleOption}">
-                <h2 
-                    style="color: {text_color}; text-shadow: 0 0 16.5px {text_color};" 
-                    on:focus={toggleUID} 
-                    on:mouseover={toggleUID} 
-                    on:mouseleave={toggleUID} 
-                    class="text-xl font-medium px-2"
+
+            {#if status !== "" && status !== null}
+                <div 
+                    class="flex items-center justify-center w-[95%] text-center text-[14px] h-4 break-words py-4 leading-[25px]"
+                    style="color: {description_color};"
+                    id="status"
                 >
-                    {display_name}
-                </h2>
-            </div>
-        </div>
-
-        {#if badges && Object.keys(badges).length > 0}
-            <div class="flex items-center bg-black/70 rounded-[20px] py-1.5 px-5 gap-2.5">
-                {#each badges as badge}
-                    <div class="relative flex items-center">
-                        {#if hoveredBadge === badge}
-                            <div 
-                                class="absolute bottom-7 left-1/2 transform -translate-x-1/2 bg-black/73 rounded-md text-xs px-2 py-1 whitespace-nowrap" 
-                                transition:fade={{ delay: 100,  duration: 200 }}
-                            >
-                                {badgeTitles[badge]}
-                            </div>
-                        {/if}
-                        <div 
-                            class="relative flex items-center justify-center" 
-                            style="filter: drop-shadow(0 0 12px {badge_color}80);" 
-                            role="presentation" 
-                            on:mouseover={() => badgeHover(badge)} 
-                            on:focus={() => badgeHover(badge)} 
-                            on:mouseleave={() => badgeHover(null)}
+                    {#if typewriter}
+                        <Typewriter mode="loop" wordInterval={5000} interval={60} unwriteInterval={60}>
+                            <p>{status}</p>
+                        </Typewriter>
+                    {:else}
+                        <p 
+                            class="text-center"
                         >
-                            {@html badgeIcons[badge.toLowerCase()]}
-                        </div>
-                    </div>
-                {/each}
-            </div>
-        {/if}
+                            {status}
+                        </p>
+                    {/if}
+                </div>
+            {/if}
 
-        {#if status !== "" && status !== null}
-            <div 
-                class="flex items-center justify-center w-[95%] text-center text-[14px] h-4 break-words py-4 leading-[25px]"
-                style="color: {description_color};"
-                id="status"
-            >
-                {#if typewriter}
-                    <Typewriter mode="loop" wordInterval={5000} interval={60} unwriteInterval={60}>
-                        <p>{status}</p>
-                    </Typewriter>
-                {:else}
-                    <p 
-                        class="text-center"
-                    >
-                        {status}
-                    </p>
+            <div class="flex flex-wrap items-center justify-center gap-[14px] mt-4 w-[90%] max-w-[750px]">
+                {#if socials}
+                    {#each Object.entries(socials) as [socialName, socialLink] (socialName)}
+                        {#if !clipboardSocials.includes(socialName.toLowerCase())}
+                            <a 
+                                href={socialLink} 
+                                target="_blank"
+                                class="flex items-center justify-center"
+                            >
+                                <div class="flex items-center justify-center transition hover:scale-110" style="filter: drop-shadow(0 0 8px {icon_color}99);">
+                                    {@html socialIcons[socialName.toLowerCase()]}
+                                </div>
+                            </a>
+                        {:else}
+                            <button 
+                                on:click={() => copyToClipboard(socialName, socialLink)}
+                                class="flex items-center justify-center"
+                            >
+                                <div class="flex items-center justify-center transition hover:scale-110" style="filter: drop-shadow(0 0 8px {icon_color}80);">
+                                    {@html socialIcons[socialName.toLowerCase()]}
+                                </div>
+                            </button>
+                        {/if}
+                    {/each}
                 {/if}
             </div>
-        {/if}
+        
+            <!-- <DiscordPresence
+                discord_username="kyro" 
+                discord_pfp="https://cdn.flova.xyz/cat.jpg" 
+                discord_status="online" 
+                discord_custom_status="Discord status placeholder" 
+                discord_icon="" 
+                artist="Placeholder Artist" 
+                song="Placeholder Song" 
+            /> -->
 
-        <div class="flex flex-wrap items-center justify-center gap-[14px] mt-4 w-[90%] max-w-[750px]">
-            {#if socials}
-                {#each Object.entries(socials) as [socialName, socialLink] (socialName)}
-                    {#if !clipboardSocials.includes(socialName.toLowerCase())}
-                        <a 
-                            href={socialLink} 
-                            target="_blank"
-                            class="flex items-center justify-center"
-                        >
-                            <div class="flex items-center justify-center transition hover:scale-110" style="filter: drop-shadow(0 0 8px {icon_color}99);">
-                                {@html socialIcons[socialName.toLowerCase()]}
-                            </div>
-                        </a>
-                    {:else}
-                        <button 
-                            on:click={() => copyToClipboard(socialName, socialLink)}
-                            class="flex items-center justify-center"
-                        >
-                            <div class="flex items-center justify-center transition hover:scale-110" style="filter: drop-shadow(0 0 8px {icon_color}80);">
-                                {@html socialIcons[socialName.toLowerCase()]}
-                            </div>
-                        </button>
-                    {/if}
-                {/each}
+            {#if username === "kyro"}
+                <CustomLink 
+                    name="create your own linktree"
+                    text_color={text_color}
+                    href="/"
+                />
             {/if}
-        </div>
-       
-        <!-- <DiscordPresence
-            discord_username="kyro" 
-            discord_pfp="https://cdn.flova.xyz/cat.jpg" 
-            discord_status="online" 
-            discord_custom_status="Discord status placeholder" 
-            discord_icon="" 
-            artist="Placeholder Artist" 
-            song="Placeholder Song" 
-        /> -->
 
-        {#if username === "kyro"}
-            <CustomLink 
-                name="create your own linktree"
+            <ViewCount 
+                view_count={view_count}
                 text_color={text_color}
-                href="/"
             />
-        {/if}
-
-        <ViewCount 
-            view_count={view_count}
-            text_color={text_color}
-        />
+        </div>
     </div>
 </div>
 
