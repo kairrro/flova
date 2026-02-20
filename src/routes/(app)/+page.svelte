@@ -48,8 +48,8 @@
     profile_opacity={"40"}
     uid={"1"}
     display_name={"kyro"}
-    pfp={"https://flova.b-cdn.net/3d2324dfdb9ad2776f00c9dfd7932fce.jpg"}
-    background={"https://flova.b-cdn.net/damn.webp"}
+    pfp={"https://i.pinimg.com/736x/5b/9a/17/5b9a17a61f790c02623318c371d2217b.jpg"}
+    background={"https://i.pinimg.com/736x/e6/d5/25/e6d52538e5f18fbcc02b578cee6df4b9.jpg"}
     
     socials={{
         "Cashapp": "$kairrro",

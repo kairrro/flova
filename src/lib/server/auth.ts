@@ -97,8 +97,10 @@ export async function checkAvailability(username: string, email: string): Promis
 
 export function checkSignUpDetails(email: string, username: string, password: string): CustomResponse | void{
     const blacklist = [
-        'account', 'links', 'premium', 'faq', 'signup', 'login', 'register', 'dashboard', 'verify', 'tos', 'fuck', 'nigger', 'pussy',
+        'account', 'links', 'premium', 'faq', 'signup', 'login', 'register', 'dashboard', 'verify', 'tos', 'fuck', 'nigger', 'pussy', "shit", "retard",
     ];
+    // Should probably use an existing dictionary of common blacklisted / bad words but I was kinda lazy so I didn't implement it
+    
     const whitelistedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_";
     const blacklistedEmails = ['zbock', 'nezid', 'omeie', 'zslsz'];
     const [, domain] = email.split('@');

@@ -58,11 +58,11 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <a href="https://discord.gg/UdVyWkhWFP" target="_blank" class="hover:scale-110 transition">
+            <a href="/" target="_blank" class="hover:scale-110 transition">
                 {@html Discord("#f1f1f1", "34px")}
             </a>
 
-            <a href="https://www.instagram.com/honeservices" target="_blank" class="hover:scale-110 transition" >
+            <a href="/" target="_blank" class="hover:scale-110 transition" >
                 {@html Instagram("#f1f1f1", "34px")}
             </a>
         </div>
