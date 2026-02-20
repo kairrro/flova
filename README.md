@@ -5,6 +5,7 @@
 A lightweight, modern, and fully open-source biolink website. Easily create a page with all your important links in one place. Built to be simple, fast, and secure! Making this open source as I do not have time to work on this project anymore.
 
 # Stack
+- Sveltekit: Javascript Framework
 - Supabase: Database and Authentication
 - Cloudflare Turnstile: Used for captcha verification
 - BunnyCDN: CDN
@@ -12,13 +13,9 @@ A lightweight, modern, and fully open-source biolink website. Easily create a pa
 - Discord Webhook: For logging
 
 # Getting Started
-- Clone the repository
-git clone https://github.com/kairrro/flova
-cd flova
-
-- Install dependencies
-npm install or yarn
-
+- Clone the repository: git clone https://github.com/kairrro/flova
+- Get in the directory: cd flova
+- Install dependencies: npm install or yarn
 - Setup Environment Variables: Create a .env file in the root of the project and add the following variables:
 
 # Environment Variables
