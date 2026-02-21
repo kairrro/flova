@@ -4,7 +4,7 @@ import { DISCORD_WEBHOOK } from "$env/static/private";
 
 export const SUPABASE_URL = "https://nfeoimbkskulevvxpwxi.supabase.co";
 
-// This supabase key is safe to use in a browser.
+// This supabase key is safe to use in a browser.cls
 export const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5mZW9pbWJrc2t1bGV2dnhwd3hpIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwNDk5NTM5OSwiZXhwIjoyMDIwNTcxMzk5fQ.dUPAf2isr6fGrHpsdUMeeWeR_oz_z2AUmW1ChaOWH2M"
 export const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
